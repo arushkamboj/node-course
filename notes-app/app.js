@@ -8,8 +8,15 @@ const getNotes = require("./notes.js");
 yargs.command({
   command: "add",
   describe: "Add a note",
-  handler: function() {
-    console.log("Adding a note");
+  builder: {
+    title: {
+      describe: "Note Title",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler: function(argv) {
+    console.log("Title: ", argv.title);
   }
 });
 
@@ -40,4 +47,4 @@ yargs.command({
   }
 });
 
-console.log(yargs.argv);
+yargs.parse();
