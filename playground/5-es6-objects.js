@@ -1,4 +1,4 @@
-//Object propert shorthand
+//Object property shorthand
 
 const name = 'Arush';
 const userAge = 26;
