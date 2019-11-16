@@ -1,15 +1,16 @@
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
-geocode('Austin', (error, data) => {
+geocode('Austin', (error, { latitude, longitude, location }) => {
   if (error) {
     return console.log('error: ', error);
   }
-  forecast(data.latitude, data.longitude, (error, _forecastData) => {
+
+  forecast(latitude, longitude, (error, _forecastData) => {
     if (error) {
       return console.log('error: ', error);
     }
 
-    console.log('Data: ', _forecastData);
+    console.log('Data: ', location, _forecastData);
   });
 });
