@@ -2,10 +2,14 @@ const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
 geocode('Austin', (error, data) => {
-  console.log('error: ', error);
-  console.log('data: ', data);
-  forecast(data.latitude, data.longitude, (error, data) => {
-    console.log('Error', error);
-    console.log('Data', data);
+  if (error) {
+    return console.log('error: ', error);
+  }
+  forecast(data.latitude, data.longitude, (error, _forecastData) => {
+    if (error) {
+      return console.log('error: ', error);
+    }
+
+    console.log('Data: ', _forecastData);
   });
 });
