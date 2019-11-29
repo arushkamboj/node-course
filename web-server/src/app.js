@@ -4,10 +4,11 @@ const express = require('express');
 const app = express();
 const publicDir = path.join(__dirname, '../public');
 
+app.set('view engine', 'hbs');
 app.use(express.static(publicDir));
 
 app.get('', (req, res) => {
-  res.send('I arrived');
+  res.render('index');
 });
 
 app.get('/weather', (req, res) => {
